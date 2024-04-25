@@ -8,16 +8,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5;
     [SerializeField] GameObject myLeftBorder;
     [SerializeField] GameObject myRightBorder;
+    [SerializeField] GameObject myTopBorder;
+    [SerializeField] GameObject myBottomBorder;
+
     [SerializeField] GameObject pizzaProjectile;
 
-    void Start()
-    {
-        
-    }
-
-   
+ 
     void Update()
-    {   float direction = Input.GetAxis("Horizontal");
+    {   float horizontalDirection = Input.GetAxis("Horizontal");
+        float verticalDirection = Input.GetAxis("Vertical");
+
         if(this.transform.position.x< myLeftBorder.transform.position.x )
         {
             this.transform.position=new Vector3(myLeftBorder.transform.position.x, transform.position.y, transform.position.z);
@@ -26,10 +26,18 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.position = new Vector3(myRightBorder.transform.position.x, transform.position.y, transform.position.z);
         }
-        else
+        else if(this.transform.position.z> myTopBorder.transform.position.z)
         {
-            this.transform.Translate(new Vector3(speed * direction * Time.deltaTime, 0, 0));
+            this.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,myTopBorder.transform.position.z);
         }
+        else if (this.transform.position.z< myBottomBorder.transform.position.z)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, myBottomBorder.transform.position.z);
+
+        }
+
+        this.transform.Translate(new Vector3(speed * horizontalDirection * Time.deltaTime, 0, verticalDirection*speed*Time.deltaTime));
+        
 
 
         if(Input.GetKeyDown(KeyCode.Space))
