@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
         {   if(pizzaProjectile != null) 
             Instantiate(pizzaProjectile,this.transform);
         }
-        if(pizzaProjectile.transform.position.z>40)
-            Destroy(pizzaProjectile) ;
+        
     }
 }
