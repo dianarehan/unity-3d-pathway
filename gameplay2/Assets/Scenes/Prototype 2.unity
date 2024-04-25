@@ -780,6 +780,10 @@ MonoBehaviour:
   - {fileID: 2521789603222728659, guid: b4b7d1a6993649b4bb4f24f3f9aaa493, type: 3}
   - {fileID: 5028611558682841120, guid: ba85e609721b73b439fb69f68a0fd26e, type: 3}
   - {fileID: 824551812641911975, guid: 72e6ff8a21ae01e4a998f062ba79a5b5, type: 3}
+  rightBorder: {fileID: 610133332}
+  leftBorder: {fileID: 1339886094}
+  topBorder: {fileID: 254019414}
+  bottomBorder: {fileID: 1217539722}
 --- !u!4 &1254634985
 Transform:
   m_ObjectHideFlags: 0

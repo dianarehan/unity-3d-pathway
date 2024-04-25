@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2749120744737801846}
   m_Layer: 0
   m_Name: Pizza
-  m_TagString: Untagged
+  m_TagString: Pizza
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5e806f8250a5e4f898e91d44bf41b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8437656716039294515, guid: 079ae7a8d662580408bae7f76e96dc37, type: 3}
   speed: 40
 --- !u!65 &3431337361935744872
 BoxCollider:

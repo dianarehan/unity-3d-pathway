@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5e806f8250a5e4f898e91d44bf41b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8437656716039294515, guid: 079ae7a8d662580408bae7f76e96dc37, type: 3}
   speed: 20
 --- !u!65 &876656138751967324
 BoxCollider:
@@ -453,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa9911ddd5edde4a882d84fea067b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8437656716039294515, guid: 079ae7a8d662580408bae7f76e96dc37, type: 3}
 --- !u!54 &-2559837729097862629
 Rigidbody:
   m_ObjectHideFlags: 0

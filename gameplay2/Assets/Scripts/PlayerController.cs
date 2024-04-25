@@ -12,8 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject myBottomBorder;
 
     [SerializeField] GameObject pizzaProjectile;
+    public static int playerScore = 0;
+    public static int playerLive = 3;
 
- 
+   
     void Update()
     {   float horizontalDirection = Input.GetAxis("Horizontal");
         float verticalDirection = Input.GetAxis("Vertical");
