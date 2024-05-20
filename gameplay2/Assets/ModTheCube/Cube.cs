@@ -11,7 +11,20 @@ public class Cube : MonoBehaviour
 
     Quaternion currentRotation;
     Quaternion targetRotation;
+
+    Vector3 startPosition;
+    Vector3 targetPosition;
     float val;
+
+    Vector3 scalei;
+    Vector3 scalej;
+
+    float transitionSpeed = 1.0f; 
+    private float lerpTime = 0f;
+    private float lerpTime2 = 0f;
+
+
+
     void Start()
     {
         transform.position = new Vector3(3, 4, 1);
@@ -23,6 +36,12 @@ public class Cube : MonoBehaviour
 
         currentRotation =transform.localRotation;
         targetRotation= getNewRotation();
+
+        startPosition=this.transform.position;
+        targetPosition = new Vector3(-6.88999987f, 0f, -0.150000006f);
+
+        scalei = this.transform.localScale;
+        scalej = this.transform.localScale*2;
         
     }
 
@@ -46,6 +65,33 @@ public class Cube : MonoBehaviour
         {
             targetRotation = getNewRotation();
             val = 0;
+        }
+        lerpTime += Time.deltaTime * transitionSpeed;
+        
+
+        transform.localPosition = Vector3.Lerp(startPosition, targetPosition, lerpTime);
+
+        
+        if (Vector3.Distance(targetPosition,transform.localPosition) < 0.01f)
+        {
+            
+            Vector3 temp = startPosition;
+            startPosition = targetPosition;
+            targetPosition = temp;
+            lerpTime = 0f;
+        }
+
+        lerpTime2 += Time.deltaTime * transitionSpeed;
+        transform.localScale = Vector3.Lerp(scalei,scalej,lerpTime2);
+
+
+        if (Vector3.Distance(scalej, transform.localScale) < 0.01f)
+        {
+            Vector3 temp = scalei;
+            scalei = scalej;
+            scalej=temp;
+            lerpTime2 = 0f;
+
         }
     }
     Quaternion getNewRotation()
