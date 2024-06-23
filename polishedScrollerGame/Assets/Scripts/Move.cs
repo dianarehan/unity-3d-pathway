@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    private float speed = 10f;
-    
+    private float speed = 20f;
+    private PlayerController controller;
+
+    private void Start()
+    {
+        controller = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
     void Update()
     {
-        gameObject.transform.Translate(Vector3.left* speed * Time.deltaTime);
-        if (gameObject.transform.position.x < -25|| gameObject.transform.position.y < -3)
+
+        if (!controller.gameOver)
         {
-            Destroy(gameObject);
+            gameObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
+            if (gameObject.tag.Equals("Log") && (gameObject.transform.position.x < -25 || gameObject.transform.position.y < -3))
+            {
+                Destroy(gameObject);
+            }
         }
     }
+
 }

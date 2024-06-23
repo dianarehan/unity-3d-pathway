@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float gravityModifier;
     private bool isGrounded = true;
+    public bool gameOver;
     void Start()
     {
         rb= GetComponent<Rigidbody>();
@@ -42,6 +43,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag("Log"))
+        {
+           gameOver = true;
         }
     }
 }
