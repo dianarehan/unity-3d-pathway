@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Animator playerAnim;
+    private ParticleSystem explostionParticle;
+    private ParticleSystem dirtParticle;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float gravityModifier;
     private bool isGrounded = true;
@@ -13,6 +15,8 @@ public class PlayerController : MonoBehaviour
    
     void Start()
     {
+        explostionParticle = gameObject.transform.GetChild(0).GetComponent<ParticleSystem>();
+        dirtParticle=gameObject.transform.GetChild(1).GetComponent<ParticleSystem>();
         rb= GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         Physics.gravity*=gravityModifier;
@@ -28,6 +32,8 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
             playerAnim.SetTrigger("Jump_trig");
+            dirtParticle.Stop();
+            dirtParticle.gameObject.SetActive(false);
         }
         
         
@@ -46,13 +52,18 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            dirtParticle.gameObject.SetActive(true);
+            dirtParticle.Play();
         }
         if (collision.gameObject.CompareTag("Log"))
         {
             gameOver = true;
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int",(int)Random.Range(1,3));
-            
+            explostionParticle.gameObject.SetActive(true);
+            explostionParticle.Play();
+            dirtParticle.Stop();
+            dirtParticle.gameObject.SetActive(false);
 
             
         }
