@@ -13,7 +13,6 @@ public class RepeatBackground : MonoBehaviour
         repeatWidth = gameObject.GetComponent<BoxCollider>().size.x/2;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(transform.position.x<startPos.x- repeatWidth)
